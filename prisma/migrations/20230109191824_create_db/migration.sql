@@ -6,3 +6,6 @@ CREATE TABLE "FirstPage" (
 
     CONSTRAINT "FirstPage_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "FirstPage_id_key" ON "FirstPage"("id");

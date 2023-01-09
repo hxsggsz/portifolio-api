@@ -1,14 +1,66 @@
 generator client {
-      provider = "prisma-client-js"
-    }
-    
-    datasource db {
-      provider = "cockroachdb"
-      url      = env("DATABASE_URL")
-    }
-    
-    model FirstPage {
-      id      String @unique @id @default(uuid())
-      content String
-      images  String
-    }
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model FirstPage {
+  id      String @id @unique @default(uuid())
+  images  String
+  content String
+}
+
+model Portifolio {
+  id          String         @id @unique @default(uuid())
+  language    Languages[]
+  certificate Certificates[]
+  project     Projects[]
+}
+
+model Languages {
+  id           String      @id @unique @default(uuid())
+  name         String
+  images       String
+  createdAt    DateTime    @default(now())
+  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId String?
+}
+
+model Certificates {
+  id           String      @id @unique @default(uuid())
+  name         String
+  images       String
+  description  String
+  createdAt    DateTime    @default(now())
+  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId String?
+}
+
+model Projects {
+  id           String      @id @unique @default(uuid())
+  url          String
+  name         String
+  images       String
+  description  String
+  createdAt    DateTime    @default(now())
+  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId String?
+}
+
+model Contact {
+  id     String    @id @unique @default(uuid())
+  text   String
+  social Socials[]
+}
+
+model Socials {
+  id           String   @id @unique @default(uuid())
+  socials      String
+  socialImages String
+  curriculum   String?
+  Contact      Contact? @relation(fields: [contactId], references: [id])
+  contactId    String?
+}
