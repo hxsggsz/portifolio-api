@@ -3,10 +3,9 @@ import { prisma } from "../db/prismaClient";
 
 export class findPortfolioController {
   async handle(req: Request, res: Response) {
-    const { id } = req.params;
     const portfolio = await prisma.portifolio.findUnique({
       where: {
-        id,
+        id: "086643f9-d7d6-4982-8dcd-9806aec7db85",
       },
       include: {
         project: true,

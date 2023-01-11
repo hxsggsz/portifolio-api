@@ -8,9 +8,10 @@ datasource db {
 }
 
 model FirstPage {
-  id      String @id @unique @default(uuid())
-  images  String
-  content String
+  id          String @id @unique @default(uuid())
+  images      String
+  content     String
+  translation String
 }
 
 model Portifolio {
@@ -24,6 +25,7 @@ model Languages {
   id           String      @id @unique @default(uuid())
   name         String
   images       String
+  translation  String
   createdAt    DateTime    @default(now())
   Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
   portifolioId String?
@@ -34,33 +36,40 @@ model Certificates {
   name         String
   images       String
   description  String
+  translation  String
   createdAt    DateTime    @default(now())
   Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
   portifolioId String?
 }
 
 model Projects {
-  id           String      @id @unique @default(uuid())
-  url          String
-  name         String
-  images       String
-  description  String
-  createdAt    DateTime    @default(now())
-  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
-  portifolioId String?
+  id            String      @id @unique @default(uuid())
+  url           String
+  urlRepository String
+  name          String
+  images        String
+  description   String
+  translation   String
+  languages     String
+  createdAt     DateTime    @default(now())
+  Portifolio    Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId  String?
 }
 
 model Contact {
-  id     String    @id @unique @default(uuid())
-  text   String
-  social Socials[]
+  id          String    @id @unique @default(uuid())
+  text        String
+  translation String
+  curriculum  String
+  social      Socials[]
 }
 
 model Socials {
   id           String   @id @unique @default(uuid())
   socials      String
   socialImages String
-  curriculum   String?
+  socialLinks  String
+  translation  String
   Contact      Contact? @relation(fields: [contactId], references: [id])
   contactId    String?
 }
