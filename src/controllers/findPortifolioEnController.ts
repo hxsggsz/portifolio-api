@@ -8,9 +8,11 @@ export class findPortifolioENController {
         id: "d6537d61-3c8a-4528-8b3c-899b4f908f15",
       },
       include: {
-        certificate: true,
-        language: true,
+        page: true,
+        about: true,
         project: true,
+        language: true,
+        certificate: true,
       },
     });
 

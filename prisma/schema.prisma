@@ -8,10 +8,12 @@ datasource db {
 }
 
 model FirstPage {
-  id          String @id @unique @default(uuid())
-  images      String
-  content     String
-  translation String
+  id           String      @id @unique @default(uuid())
+  images       String
+  content      String
+  translation  String
+  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId String?
 }
 
 model Portifolio {
@@ -19,6 +21,8 @@ model Portifolio {
   language    Languages[]
   certificate Certificates[]
   project     Projects[]
+  about       About[]
+  page        FirstPage[]
 }
 
 model Languages {
@@ -62,6 +66,14 @@ model Contact {
   translation String
   curriculum  String
   social      Socials[]
+}
+
+model About {
+  id           String      @id @unique @default(uuid())
+  text         String
+  translation  String      @default("ptbr")
+  Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
+  portifolioId String?
 }
 
 model Socials {

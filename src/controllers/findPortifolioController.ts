@@ -8,6 +8,8 @@ export class findPortfolioController {
         id: "086643f9-d7d6-4982-8dcd-9806aec7db85",
       },
       include: {
+        page: true,
+        about: true,
         project: true,
         language: true,
         certificate: true,
