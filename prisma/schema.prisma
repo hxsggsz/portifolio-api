@@ -71,6 +71,8 @@ model Contact {
 model About {
   id           String      @id @unique @default(uuid())
   text         String
+  image        String?
+  createdAt    DateTime    @default(now())
   translation  String      @default("ptbr")
   Portifolio   Portifolio? @relation(fields: [portifolioId], references: [id])
   portifolioId String?

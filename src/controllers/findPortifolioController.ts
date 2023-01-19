@@ -9,7 +9,11 @@ export class findPortfolioController {
       },
       include: {
         page: true,
-        about: true,
+        about: {
+          orderBy: {
+            createdAt: "asc",
+          },
+        },
         project: true,
         language: true,
         certificate: true,
