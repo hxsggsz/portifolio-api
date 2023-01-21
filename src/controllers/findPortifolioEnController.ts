@@ -15,8 +15,13 @@ export class findPortifolioENController {
           },
         },
         project: true,
-        language: true,
+        language: {
+          orderBy: {
+            createdAt: "asc",
+          },
+        },
         certificate: true,
+        
       },
     });
 
