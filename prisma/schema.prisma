@@ -53,6 +53,7 @@ model Projects {
   name          String
   images        String
   description   String
+  icon          String?
   translation   String
   languages     String
   createdAt     DateTime    @default(now())
