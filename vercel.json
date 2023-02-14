@@ -1,0 +1,15 @@
+{
+  "name": "portifolio-api",
+  "version": 2,
+  "public": true,
+  "build": {
+    "src": "src/server.ts",
+    "use": "@vercel/node"
+  },
+  "routes": [
+    {
+      "src": "src/route.ts",
+      "dest": "src/server.ts"
+    }
+  ]
+}
