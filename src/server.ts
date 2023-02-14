@@ -1,6 +1,6 @@
+import cors from "cors";
 import Express from "express";
 import { router } from "./route";
-import cors from "cors";
 
 const corsOptions = {
   origin: "*",
